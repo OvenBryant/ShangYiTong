@@ -60,22 +60,22 @@ public class HospitalSetController {
      * 分页接口
      * 参数：当前页，大小，参数对象（医院名称，医院代号）
      *
-     * @param current
-     * @param limit
+     * @param pageNum
+     * @param pageSize
      * @param hospitalSetQueryVo
      * @return
      */
     //使用@RequestBody后使用POSTMapping获取请求的值
     @ApiOperation(value = "分页查询")
-    @PostMapping("/page/{current}/{limit}")
-    public Result pageAll(@PathVariable Integer current,
-                          @PathVariable Integer limit,
+    @PostMapping("/page/{pageNum}/{pageSize}")
+    public Result pageAll(@PathVariable Integer pageNum,
+                          @PathVariable Integer pageSize,
                           @RequestBody(required = false) HospitalSetQueryVo hospitalSetQueryVo) {
 
 
         log.info("分页查询接口调用" + LocalTime.now().toString());
 
-        Page<HospitalSet> page = new Page<>(current, limit);
+        Page<HospitalSet> page = new Page<>(pageNum, pageSize);
 
         //1.模糊查询,lambdaQueryWrapper先判空
         QueryWrapper queryWrapper = new QueryWrapper();
