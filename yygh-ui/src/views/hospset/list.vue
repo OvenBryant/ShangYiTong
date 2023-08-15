@@ -33,7 +33,7 @@
     >
       <el-table-column type="selection" width="55"/>
       <el-table-column type="index" width="50" label="序号"/>
-      <el-table-column prop="hosname" label="医院名称"/>
+      <el-table-column prop="hosname" width="200" label="医院名称"/>
       <el-table-column prop="hoscode" label="医院编号"/>
       <el-table-column prop="apiUrl" label="api基础路径" width="200"/>
       <el-table-column prop="contactsName" label="联系人姓名"/>
@@ -44,7 +44,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="操作" width="280" align="center">
+      <el-table-column label="操作" width="300" align="center">
         <template slot-scope="scope">
           <el-button
             type="danger"
@@ -56,7 +56,7 @@
           >
           <el-button
             v-if="scope.row.status == 1"
-            type="primary"
+            type="warning"
             size="mini"
             icon="el-icon-delete"
             @click="lockHostSet(scope.row.id, 0)"
@@ -65,7 +65,7 @@
           >
           <el-button
             v-if="scope.row.status == 0"
-            type="danger"
+            type="info"
             size="mini"
             icon="el-icon-delete"
             @click="lockHostSet(scope.row.id, 1)"
@@ -73,24 +73,29 @@
           </el-button
           >
 
-          <router-link :to="'/hospSet/edit/' + scope.row.id">
-            <el-button type="primary" size="mini" icon="el-icon-edit"
-            >编辑
-            </el-button
-            >
-          </router-link>
+          <!--          <router-link :to="'/hospSet/edit/' + scope.row.id">-->
+          <!--            <el-button type="primary" size="mini" icon="el-icon-edit"-->
+          <!--            >编辑-->
+          <!--            </el-button-->
+          <!--            >-->
+          <!--          </router-link>-->
+
+          <el-button type="primary" size="mini" icon="el-icon-edit" @click="editHosp(scope.row)">编辑</el-button>
+
         </template>
       </el-table-column>
     </el-table>
 
     <!-- 分页 -->
     <el-pagination
-      :current-page="pageNum"
-      :page-size="pageSize"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
       :total="total"
+      :page-size="pageSize"
+      :current-page="pageNum"
+      :page-sizes="[5,10,15,20]"
       style="padding: 30px 0; text-align: center"
-      layout="total, prev, pager, next, jumper"
-      @current-change="getList"
+      layout="total,sizes, prev, pager, next, jumper"
     />
   </div>
 </template>
@@ -129,12 +134,73 @@ export default {
           console.log(error);
         });
     },
-    removeRows() {
+    handleSizeChange(size) {
+      this.pageSize = size;
+      this.getList();
     },
+    handleCurrentChange(num) {
+      this.pageNum = num
+      this.getList(num);
+    },
+    // 跳转到add页面中,编辑数据
+    editHosp(row){
+      this.$router.push({
+        name:'add',
+        params:{
+          hospsetRow:row
+        }
+      })
+    },
+
+    // 批量删除
+    removeRows() {
+
+      this.$confirm('此操作将永久删除该医院, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+
+        var idList = []
+        //遍历数组得到每个id值，设置到idList里面
+        for (var i = 0; i < this.multipleSelection.length; i++) {
+          var obj = this.multipleSelection[i]
+          var id = obj.id
+          idList.push(id)
+        }
+
+        if (idList.length < 1) {
+          this.$message.error("删除医院不能为空")
+          return;
+        }
+
+        hospset.batchRemoveHospSet(idList).then(res => {
+
+          if (res.code === 200) {
+            //刷新页面
+            this.getList(1)
+            //提示
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            })
+          } else {
+            //提示
+            this.$message({
+              type: 'error',
+              message: '删除失败!'
+            })
+          }
+        })
+      }).catch(() => {
+      });
+
+    },
+
     // 根据id,删除医院
     removeDataById(id) {
 
-      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除该医院信息, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -143,7 +209,7 @@ export default {
 
         hospset.deleteById(id).then((res) => {
           if (res.code === 200) {
-            this.getList()
+            this.getList(this.pageNum)
             this.$message({
               type: 'success',
               message: '删除成功!'
@@ -157,16 +223,17 @@ export default {
         })
 
 
+      }).catch(() => {
       })
 
     },
-    // 锁定医院
-    lockHostSet(id,status) {
-      hospset.lockHospitalSet(id,status).then((res)=>{
-        if(res.code===200){
-          this.getList();
+    // 根据id是否锁定医院
+    lockHostSet(id, status) {
+      hospset.lockHospitalSet(id, status).then((res) => {
+        if (res.code === 200) {
+          this.getList(this.pageNum);
           this.$message.success("锁定成功")
-        }else{
+        } else {
           this.$message.error("锁定失败")
         }
       })
