@@ -5,29 +5,24 @@
         <groupId>com.bryant</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-hosp</artifactId>
+    <artifactId>service_cmn</artifactId>
     <packaging>jar</packaging>
 
-    <!--引入对应的实体类-->
+    <name>service_cmn</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
-        <!--引用公共模块service-->
         <dependency>
-            <groupId>com.bryant</groupId>
-            <artifactId>service_utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.bryant</groupId>
-            <artifactId>common_utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-
     </dependencies>
-
-
 </project>
