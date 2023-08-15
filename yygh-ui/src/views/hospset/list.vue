@@ -131,17 +131,36 @@ export default {
     },
     removeRows() {
     },
-    // 根据id医院信息
+    // 根据id,删除医院
     removeDataById(id) {
-      hospset.deleteById(id).then((res) => {
-        if (res.code === 200) {
-          this.getList()
-          this.$message.success("删除成功")
-        } else {
-          this.$message.error("删除失败")
-        }
+
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+
+
+        hospset.deleteById(id).then((res) => {
+          if (res.code === 200) {
+            this.getList()
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            });
+          } else {
+            this.$message({
+              type: 'error',
+              message: '删除失败!'
+            });
+          }
+        })
+
+
       })
+
     },
+    // 锁定医院
     lockHostSet(id,status) {
       hospset.lockHospitalSet(id,status).then((res)=>{
         if(res.code===200){
