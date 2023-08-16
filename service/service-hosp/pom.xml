@@ -13,18 +13,7 @@
 
     <!--引入对应的实体类-->
     <dependencies>
-        <!--引用公共模块service-->
-        <dependency>
-            <groupId>com.bryant</groupId>
-            <artifactId>service_utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.bryant</groupId>
-            <artifactId>common_utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
 
     </dependencies>
