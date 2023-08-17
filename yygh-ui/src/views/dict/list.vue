@@ -1,37 +1,42 @@
 <template>
   <div class="app-container">
 
-    <el-table
-      :data="list"
-      style="width: 100%"
-      row-key="id"
-      border
-      lazy
-      :load="getChildrens"
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+    <el-button type="primary" @click="exportDict">导出</el-button>
 
-      <el-table-column label="名称" width="230" align="left">
-        <template slot-scope="scope">
-          <span>{{ scope.row.name }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="编码" width="220">
-        <template slot-scope="{row}">
-          {{ row.dictCode }}
-        </template>
-      </el-table-column>
-      <el-table-column label="值" width="230" align="left">
-        <template slot-scope="scope">
-          <span>{{ scope.row.value }}</span>
-        </template>
-      </el-table-column>
+    <div class="app-table">
+      <el-table
+        :data="list"
+        style="width: 100%"
+        row-key="id"
+        border
+        lazy
+        :load="getChildrens"
+        :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
 
-      <el-table-column label="创建时间" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.createTime }}</span>
-        </template>
-      </el-table-column>
-    </el-table>
+        <el-table-column label="名称" width="230" align="left">
+          <template slot-scope="scope">
+            <span>{{ scope.row.name }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="编码" width="220">
+          <template slot-scope="{row}">
+            {{ row.dictCode }}
+          </template>
+        </el-table-column>
+        <el-table-column label="值" width="230" align="left">
+          <template slot-scope="scope">
+            <span>{{ scope.row.value }}</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column label="创建时间" align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.createTime }}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+
   </div>
 
 </template>
@@ -51,6 +56,11 @@ export default {
     this.getDictList(1)
   },
   methods: {
+    // 导出
+    exportDict(){
+      window.open("http://localhost:8202/admin/cmn/dict/exportDict")
+    },
+
     // 获取数据列表
     getDictList(id) {
       dict.dictList(id).then(res => {
@@ -58,6 +68,7 @@ export default {
         this.list = res.data
       })
     },
+
     getChildrens(tree, treeNode, resolve) {
       setTimeout(() => {
         dict.dictList(tree.id).then(response => {
@@ -73,7 +84,7 @@ export default {
 </script>
 
 <style scoped>
-.app-container {
+.app-table {
   margin: 20px; /* 上下左右边距为20像素 */
   display: flex;
   justify-content: center; /* 水平居中 */

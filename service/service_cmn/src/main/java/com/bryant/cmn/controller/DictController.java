@@ -9,15 +9,18 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@Slf4j
+
 @Api(tags = "数据字典接口")
 @RestController
 @RequestMapping("/admin/cmn/dict")
@@ -43,19 +46,22 @@ public class DictController {
 
 
 
+    /**
+     * 设置响应头格式，并执行EasyExcel的导出操作
+     *
+     * @param response
+     * @return
+     */
+    //导出数据词典接口
+    @ApiOperation(value = "下载数据词典")
+    @GetMapping("/exportDict")
+    public Result exportDict(HttpServletResponse response) {
 
-
-    @GetMapping("/test")
-    public Result test(){
-        log.info("==============");
-        log.debug("=============");
-        log.error("==============");
-        log.trace("================");
-        log.warn("================");
-        System.out.println(log.getName());
-        Dict re = dictService.getOne(new QueryWrapper<Dict>().eq("id", 1));
-        return Result.ok(re);
+        dictService.exportDictData(response);
+        return Result.ok();
     }
+
+
 
 
 }
