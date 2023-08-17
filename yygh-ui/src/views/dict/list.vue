@@ -64,7 +64,7 @@ export default {
           console.log('子列表：', response.data)
           resolve(response.data)
         })
-      }, 800)
+      }, 300)
 
     }
 

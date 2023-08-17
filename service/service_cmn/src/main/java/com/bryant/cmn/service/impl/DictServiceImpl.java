@@ -14,6 +14,10 @@ import java.util.stream.Collectors;
 @Service
 public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements IDictService {
 
+
+    public String show(){
+        return "你好";
+    }
     /**
      * 进行了多次数据库查询,造成较高的资源消耗和延迟。
      */
