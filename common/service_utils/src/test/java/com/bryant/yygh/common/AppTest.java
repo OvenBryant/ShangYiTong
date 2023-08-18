@@ -1,4 +1,4 @@
-package com.bryant;
+package com.bryant.yygh.common;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

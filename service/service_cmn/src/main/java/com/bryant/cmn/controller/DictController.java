@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,6 +37,9 @@ public class DictController {
      * @return
      */
     //根据数据id查询子数据列表
+
+
+    @Cacheable(value = "dict",keyGenerator ="keyGenerator" )
     @ApiOperation(value = "根据数据id查询子数据列表")
     @GetMapping("/findChildData/{id}")
     public Result findChildData(@PathVariable Long id) {
@@ -51,6 +56,7 @@ public class DictController {
      * @return
      */
     //导出数据词典接口
+
     @ApiOperation(value = "下载数据词典")
     @GetMapping("/exportDict")
     public Result exportDict(HttpServletResponse response) {
@@ -66,6 +72,7 @@ public class DictController {
      * @return
      */
     //导入数据词典接口
+    @CacheEvict(value = "dict",allEntries = true)
     @ApiOperation(value = "上传入数据词典")
     @PostMapping("/uploadDict")
     public Result uploadDict(MultipartFile file) {

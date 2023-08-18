@@ -25,11 +25,11 @@ import java.time.Duration;
  *
  */
 @Configuration
-@EnableCaching
+@EnableCaching  // 开启缓存注解功能
 public class RedisConfig {
 
     /**
-     * 自定义key规则
+     * 自定义key规则 当前类的包名+方法名+参数
      *
      * @return
      */

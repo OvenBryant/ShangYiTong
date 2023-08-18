@@ -20,6 +20,8 @@ public class Result<T> {
     @ApiModelProperty(value = "返回数据")
     private T data;
 
+    private String ok;
+
     public Result(){}
 
     protected static <T> Result<T> build(T data) {
