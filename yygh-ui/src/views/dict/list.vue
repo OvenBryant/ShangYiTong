@@ -1,7 +1,27 @@
 <template>
   <div class="app-container">
 
-    <el-button type="primary" @click="exportDict">导出</el-button>
+    <el-button type="primary" icon="el-icon-upload2"
+               size="mini" @click="exportDict">导出
+    </el-button>
+
+    <el-upload
+      :action="'http://localhost:8202/admin/cmn/dict/uploadDict'"
+      :show-file-list="false"
+      accept="xlsx"
+      :on-success="onUploadSuccess"
+      style="display: inline-block"
+    >
+      <el-button
+        type="warning"
+        plain
+        icon="el-icon-download"
+        size="mini"
+      >导入
+      </el-button
+      >
+    </el-upload>
+
 
     <div class="app-table">
       <el-table
@@ -57,8 +77,13 @@ export default {
   },
   methods: {
     // 导出
-    exportDict(){
+    exportDict() {
       window.open("http://localhost:8202/admin/cmn/dict/exportDict")
+    },
+
+    // 导入
+    onUploadSuccess() {
+      this.getDictList(1);
     },
 
     // 获取数据列表

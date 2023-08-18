@@ -4,12 +4,14 @@ import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.bryant.cmn.listener.DictListener;
 import com.bryant.cmn.mapper.DictMapper;
 import com.bryant.cmn.service.IDictService;
 import com.bryant.yygh.model.cmn.Dict;
 import com.bryant.yygh.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -117,4 +119,20 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
             e.printStackTrace();
         }
     }
+
+
+    /**
+     * 上传数据
+     *
+     * @param file
+     */
+    @Override
+    public void uploadData(MultipartFile file) {
+        try {
+            EasyExcel.read(file.getInputStream(), DictEeVo.class, new DictListener(baseMapper)).sheet().doRead();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

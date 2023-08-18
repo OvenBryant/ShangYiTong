@@ -11,10 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,6 +58,21 @@ public class DictController {
         dictService.exportDictData(response);
         return Result.ok();
     }
+
+    /**
+     * 上传数据词典
+     *
+     * @param file
+     * @return
+     */
+    //导入数据词典接口
+    @ApiOperation(value = "上传入数据词典")
+    @PostMapping("/uploadDict")
+    public Result uploadDict(MultipartFile file) {
+        dictService.uploadData(file);
+        return Result.ok();
+    }
+
 
 
 
