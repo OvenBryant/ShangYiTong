@@ -13,7 +13,10 @@
 
     <!--引入对应的实体类-->
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
 
 
     </dependencies>
