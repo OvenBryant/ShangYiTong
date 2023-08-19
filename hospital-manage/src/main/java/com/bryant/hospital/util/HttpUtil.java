@@ -62,6 +62,7 @@ public final class HttpUtil {
 				os.flush();
 				os.close();
 			}
+			// 创建一个BufferedReader对象，用于读取HttpURLConnection的响应
 			BufferedReader in = new BufferedReader(new InputStreamReader(httpcon.getInputStream(),"utf-8"));
 			String inputLine;
 			StringBuilder bankXmlBuffer = new StringBuilder();

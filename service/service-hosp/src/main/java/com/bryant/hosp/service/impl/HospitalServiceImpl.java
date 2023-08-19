@@ -29,12 +29,14 @@ public class HospitalServiceImpl implements IHospitalService {
 
     @Override
     public void save(Map<String, Object> paramMap) {
-        //把参数map集合转换对象 Hospital
+
+        // 把参数map集合转换对象 Hospital
         String mapString = JSONObject.toJSONString(paramMap);
         Hospital hospital = JSONObject.parseObject(mapString, Hospital.class);
 
         //判断是否存在数据
         String hoscode = hospital.getHoscode();
+        // 符合规范,不需要具体的实现
         Hospital hospitalExist = hospitalRepository.getHospitalByHoscode(hoscode);
 
         //如果存在，进行修改
