@@ -1,7 +1,8 @@
 package com.bryant.hospital.mapper;
 
-import com.atguigu.hospital.model.Schedule;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.bryant.hospital.model.Schedule;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

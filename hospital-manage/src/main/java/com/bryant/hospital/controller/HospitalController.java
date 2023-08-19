@@ -1,8 +1,12 @@
 package com.bryant.hospital.controller;
 
-import com.atguigu.hospital.service.ApiService;
-import com.atguigu.hospital.service.HospitalService;
-import com.atguigu.hospital.util.*;
+
+import com.bryant.hospital.service.ApiService;
+import com.bryant.hospital.service.HospitalService;
+import com.bryant.hospital.util.HttpRequestHelper;
+import com.bryant.hospital.util.Result;
+import com.bryant.hospital.util.ResultCodeEnum;
+import com.bryant.hospital.util.YyghException;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

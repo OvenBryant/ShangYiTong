@@ -1,7 +1,8 @@
 package com.bryant.hospital.mapper;
 
-import com.atguigu.hospital.model.OrderInfo;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.bryant.hospital.model.OrderInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

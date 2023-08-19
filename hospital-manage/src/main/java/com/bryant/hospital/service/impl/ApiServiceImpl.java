@@ -2,14 +2,15 @@ package com.bryant.hospital.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.atguigu.hospital.mapper.HospitalSetMapper;
-import com.atguigu.hospital.mapper.ScheduleMapper;
-import com.atguigu.hospital.model.HospitalSet;
-import com.atguigu.hospital.model.Schedule;
-import com.atguigu.hospital.service.ApiService;
-import com.atguigu.hospital.util.BeanUtils;
-import com.atguigu.hospital.util.HttpRequestHelper;
-import com.atguigu.hospital.util.YyghException;
+
+import com.bryant.hospital.mapper.HospitalSetMapper;
+import com.bryant.hospital.mapper.ScheduleMapper;
+import com.bryant.hospital.model.HospitalSet;
+import com.bryant.hospital.model.Schedule;
+import com.bryant.hospital.service.ApiService;
+import com.bryant.hospital.util.BeanUtils;
+import com.bryant.hospital.util.HttpRequestHelper;
+import com.bryant.hospital.util.YyghException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
