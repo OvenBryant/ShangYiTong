@@ -1,0 +1,188 @@
+wide  宽
+long  forever  长
+tall  高
+combine  组合、连接
+Extension   扩展名
+Directory   目录
+dictionary 字典
+contains   包含
+Access  通道
+source  来源
+target  目标
+Price  价格
+bark   叫、树皮
+virtual  事实上的、虚拟的
+abstract   抽象的
+private    私有的
+shape   形状
+Circle   圆
+Area   面积
+square   广场、正方形
+Perimeter  周长
+Dictionary   字典
+append   追加
+internal   内部的
+partial    部分
+sealed   密封的
+Percent  百分比
+Humidity  湿度
+Event  事件
+Column   列、圆柱
+row 行
+Circle 圆
+radius 半径
+exchange   交换   change 改变
+factorial  阶乘
+prime 首要的
+check  检查
+insert 插入
+update 更新
+truncate  截断
+distinct 去重
+language  语言
+manager  经理、操作
+define  定义
+create  创造
+LastName  姓
+FirstName  名
+truncate  截断
+balance 平衡、余额
+record  记录
+display 显示,展出
+poetry  诗
+sentence 句子
+remove 去除
+pattern 图案、模式
+Regex 正则表达式
+Sensor 传感器
+Activator 活化剂
+Stroke 画笔
+thickness 厚度
+Canvas  油画   帆布
+Span  跨度
+opacity 不透明度
+angle 角 斜角 旋转
+Replace 替换
+place 地点
+pattern 模式
+March 三月
+Match 匹配
+Dialog 对话框
+entity 实体
+
+
+
+inspect 检查
+toggle 切换
+Live Wire 火线
+Neutral wire 零线
+instance 实例
+generic 泛型
+Cargo  货物
+Resources 资源
+validation 验证 生效
+Interval 间隔
+Generator  生成器 发电机
+Graphic 图解的 图形
+Directory 目录 号码簿
+Cell  细胞
+access 通道
+professional  专业版
+Community  社区版
+evaluation 评估
+docker 码头工人
+favorites 收藏夹
+extends 延伸 扩大
+instance 实例
+instanceof 运算符
+declaration 声明
+here 此处 在这里
+step 步划,行走
+over 结束,落下
+step over 跨过
+assign 分配
+variable 变量
+initialized 已初始化
+initial 最初的
+keyword 关键字
+implements 实现 工具
+example 案例
+Iterable 可迭代的
+iterator 迭代器
+arithmetic 算术
+throws 投 抛
+generic 泛型
+execute 执行
+italic 斜体
+shadow 阴影
+vector 矢量
+
+schema 模式
+cascade  级联
+restrict 限制
+authorization 批准、授权
+foreign 外国的
+references 参考,推荐人
+
+experiences 经历
+outbreak 爆发
+novel coronavirus pneumonia 新型冠状病毒肺炎
+December 12月
+attention 注意、注意力
+epidemic situation 疫情
+through  通过
+surfing the Internet 上网、网上冲浪
+insist 坚持
+exercise 练习、锻炼
+disaster 灾难
+scientists 科学家
+bravely 勇敢地
+effort 努力
+fight 战斗、打架
+against 反对
+concern 担心、涉及
+look forward 期待
+Sincerely 真诚地
+modify 修改、调整
+extract 提取、得到
+External 外部的、外面的
+declare 声明、宣布
+multiple 倍数、数量多的
+repository 仓库
+repositories 仓库的复数
+Relay 继电器、传递
+identified 确定、鉴定
+grant 授予
+extend 延伸、扩展
+normal 正常的
+immediate 立即的、目前的
+
+inverse 相反的，颠倒
+
+guest 客人
+permission 准许
+
+
+Destination 目的地
+inspect 检查
+volume 体积、卷
+Batch 一批
+interceptor 拦截器
+wrapper 封装、封皮、包装
+modified 更改过的
+knife 匕首、刀
+explorer 探险者
+Preview 预览
+actual 真实的、实际的
+expected 预期的
+dispatch 派遣、调度
+support 支持
+timestamp 时间戳
+Interval 间隔
+Timeout 超时
+evict 驱逐、逐出
+Generator 发电机、生成器
+Reduce 减少、归约、归纳
+central 中央的、中心的
+vulnerability 脆弱性、弱点
+mock 嘲笑、讥笑、模仿

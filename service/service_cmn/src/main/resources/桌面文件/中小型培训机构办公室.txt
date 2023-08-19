@@ -1,0 +1,94 @@
+
+Oracle数据库管理
+计算机组成与体系结构
+算法分析与设计
+网络应用程序设计
+
+
+E/System: Unable to open zip file: /data/app/com.example.mytravel-1/base.apk
+E/System: java.io.FileNotFoundException: File doesn't exist: /data/app/com.example.mytravel-1/base.apk
+        at java.util.zip.ZipFile.<init>(ZipFile.java:212)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:148)
+        at java.util.jar.JarFile.<init>(JarFile.java:161)
+        at java.util.jar.JarFile.<init>(JarFile.java:98)
+        at libcore.io.ClassPathURLStreamHandler.<init>(ClassPathURLStreamHandler.java:47)
+        at dalvik.system.DexPathList$Element.maybeInit(DexPathList.java:532)
+        at dalvik.system.DexPathList$Element.findResource(DexPathList.java:568)
+        at dalvik.system.DexPathList.findResources(DexPathList.java:458)
+        at dalvik.system.BaseDexClassLoader.findResources(BaseDexClassLoader.java:79)
+        at java.lang.ClassLoader.getResources(ClassLoader.java:831)
+        at java.util.ServiceLoader$LazyIterator.hasNext(ServiceLoader.java:341)
+        at java.util.ServiceLoader$1.hasNext(ServiceLoader.java:442)
+        at java.sql.DriverManager$2.run(DriverManager.java:508)
+        at java.sql.DriverManager$2.run(DriverManager.java:490)
+        at java.security.AccessController.doPrivileged(AccessController.java:41)
+        at java.sql.DriverManager.loadInitialDrivers(DriverManager.java:489)
+        at java.sql.DriverManager.<clinit>(DriverManager.java:104)
+        at java.sql.DriverManager.registerDriver(DriverManager.java)
+        at com.mysql.jdbc.Driver.<clinit>(Driver.java:49)
+        at java.lang.Class.classForName(Native Method)
+        at java.lang.Class.forName(Class.java:400)
+        at java.lang.Class.forName(Class.java:326)
+        at com.example.mytravel.utils.MysqlConUtils.getConn(MysqlConUtils.java:27)
+        at com.example.mytravel.utils.UserDao.login(UserDao.java:162)
+        at com.example.mytravel.activity.LoginActivity$1$1.run(LoginActivity.java:46)
+        at java.lang.Thread.run(Thread.java:761)
+E/AndroidRuntime: FATAL EXCEPTION: Thread-2
+    Process: com.example.mytravel, PID: 13379
+    java.lang.ExceptionInInitializerError
+        at com.mysql.jdbc.Messages.getString(Messages.java:72)
+        at com.mysql.jdbc.Util.stackTraceToString(Util.java:356)
+        at com.mysql.jdbc.Util.<clinit>(Util.java:120)
+        at com.mysql.jdbc.Util.isColdFusion(Util.java:150)
+        at com.mysql.jdbc.NonRegisteringDriver.parseURL(NonRegisteringDriver.java:720)
+        at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:314)
+        at java.sql.DriverManager.getConnection(DriverManager.java:569)
+        at java.sql.DriverManager.getConnection(DriverManager.java:219)
+        at com.example.mytravel.utils.MysqlConUtils.getConn(MysqlConUtils.java:28)
+        at com.example.mytravel.utils.UserDao.login(UserDao.java:162)
+        at com.example.mytravel.activity.LoginActivity$1$1.run(LoginActivity.java:46)
+        at java.lang.Thread.run(Thread.java:761)
+     Caused by: java.lang.RuntimeException: Can't load resource bundle due to underlying exception java.util.MissingResourceException: Can't find bundle for base name com.mysql.jdbc.LocalizedErrorMessages, locale en_US
+        at com.mysql.jdbc.Messages.<clinit>(Messages.java:54)
+        at com.mysql.jdbc.Messages.getString(Messages.java:72) 
+        at com.mysql.jdbc.Util.stackTraceToString(Util.java:356) 
+        at com.mysql.jdbc.Util.<clinit>(Util.java:120) 
+        at com.mysql.jdbc.Util.isColdFusion(Util.java:150) 
+        at com.mysql.jdbc.NonRegisteringDriver.parseURL(NonRegisteringDriver.java:720) 
+        at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:314) 
+        at java.sql.DriverManager.getConnection(DriverManager.java:569) 
+        at java.sql.DriverManager.getConnection(DriverManager.java:219) 
+        at com.example.mytravel.utils.MysqlConUtils.getConn(MysqlConUtils.java:28) 
+        at com.example.mytravel.utils.UserDao.login(UserDao.java:162) 
+        at com.example.mytravel.activity.LoginActivity$1$1.run(LoginActivity.java:46) 
+        at java.lang.Thread.run(Thread.java:761) 
+     Caused by: java.util.MissingResourceException: Can't find bundle for base name com.mysql.jdbc.LocalizedErrorMessages, locale en_US
+        at java.util.ResourceBundle.throwMissingResourceException(ResourceBundle.java:1501)
+        at java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1324)
+        at java.util.ResourceBundle.getBundle(ResourceBundle.java:723)
+        at com.mysql.jdbc.Messages.<clinit>(Messages.java:52)
+        at com.mysql.jdbc.Messages.getString(Messages.java:72) 
+        at com.mysql.jdbc.Util.stackTraceToString(Util.java:356) 
+        at com.mysql.jdbc.Util.<clinit>(Util.java:120) 
+        at com.mysql.jdbc.Util.isColdFusion(Util.java:150) 
+        at com.mysql.jdbc.NonRegisteringDriver.parseURL(NonRegisteringDriver.java:720) 
+        at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:314) 
+        at java.sql.DriverManager.getConnection(DriverManager.java:569) 
+        at java.sql.DriverManager.getConnection(DriverManager.java:219) 
+        at com.example.mytravel.utils.MysqlConUtils.getConn(MysqlConUtils.java:28) 
+        at com.example.mytravel.utils.UserDao.login(UserDao.java:162) 
+        at com.example.mytravel.activity.LoginActivity$1$1.run(LoginActivity.java:46) 
+        at java.lang.Thread.run(Thread.java:761) 
+
+
+        于是经过google才发现，用Intent传bitmap不能大于40KB,否则就会出现这个情况。
+
+
+
+
+        Can't load resource bundle due to underlying exception java.util.MissingResourceException: Can't find bundle for base name com.mysql.jdbc.LocalizedErrorMessages, locale zh_CN
+
+
+
+
+        android 校园接单
