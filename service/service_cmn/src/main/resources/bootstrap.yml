@@ -1,0 +1,5 @@
+# nacos服务
+spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848

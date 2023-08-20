@@ -2,7 +2,6 @@ package com.bryant.hosp.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bryant.hosp.repository.HospitalRepository;
 import com.bryant.hosp.service.IHospitalService;
 import com.bryant.yygh.model.hosp.Hospital;
@@ -61,36 +60,32 @@ public class HospitalServiceImpl implements IHospitalService {
         return hospital;
     }
 
+
+
+    // 医院列表(条件查询分页)
     @Override
     public Page<Hospital> selectHospPage(Integer page, Integer limit, HospitalQueryVo hospitalQueryVo) {
+        //创建pageable对象
+        Pageable pageable = PageRequest.of(page-1,limit);
+        //创建条件匹配器
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+                .withIgnoreCase(true);
+        //hospitalSetQueryVo转换Hospital对象
+        Hospital hospital = new Hospital();
+        BeanUtils.copyProperties(hospitalQueryVo,hospital);
+        //创建对象
+        Example<Hospital> example = Example.of(hospital,matcher);
+        //调用方法实现查询
+        Page<Hospital> pages = hospitalRepository.findAll(example, pageable);
 
-        return null;
-    }
-
-    //医院列表(条件查询分页)
-//    @Override
-//    public Page<Hospital> selectHospPage(Integer page, Integer limit, HospitalQueryVo hospitalQueryVo) {
-//        //创建pageable对象
-//        Pageable pageable = PageRequest.of(page-1,limit);
-//        //创建条件匹配器
-//        ExampleMatcher matcher = ExampleMatcher.matching()
-//                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
-//                .withIgnoreCase(true);
-//        //hospitalSetQueryVo转换Hospital对象
-//        Hospital hospital = new Hospital();
-//        BeanUtils.copyProperties(hospitalQueryVo,hospital);
-//        //创建对象
-//        Example<Hospital> example = Example.of(hospital,matcher);
-//        //调用方法实现查询
-//        Page<Hospital> pages = hospitalRepository.findAll(example, pageable);
-//
-//        //获取查询list集合，遍历进行医院等级封装
+        //获取查询list集合，遍历进行医院等级封装
 //        pages.getContent().stream().forEach(item -> {
-//            //this.setHospitalHosType(item);
+//            this.setHospitalHosType(item);
 //        });
-//
-//        return pages;
-//    }
+
+        return pages;
+    }
 
     //更新医院上线状态
     @Override
@@ -148,7 +143,7 @@ public class HospitalServiceImpl implements IHospitalService {
 //        return result;
     }
 
-//    //获取查询list集合，遍历进行医院等级封装
+    //获取查询list集合，遍历进行医院等级封装
 //    private Hospital setHospitalHosType(Hospital hospital) {
 //        //根据dictCode和value获取医院等级名称
 //        String hostypeString = dictFeignClient.getName("Hostype", hospital.getHostype());

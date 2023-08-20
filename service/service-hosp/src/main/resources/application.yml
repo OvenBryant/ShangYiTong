@@ -23,6 +23,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/OBryant
+
 # 配置mapper xml文件的路径
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml

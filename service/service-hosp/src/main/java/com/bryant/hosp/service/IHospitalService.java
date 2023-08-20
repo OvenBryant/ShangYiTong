@@ -1,9 +1,9 @@
 package com.bryant.hosp.service;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bryant.yygh.model.hosp.Hospital;
 import com.bryant.yygh.vo.hosp.HospitalQueryVo;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Map;
