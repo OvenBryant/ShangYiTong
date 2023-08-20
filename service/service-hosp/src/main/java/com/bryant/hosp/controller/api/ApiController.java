@@ -132,57 +132,56 @@ public class ApiController {
     //上传科室接口
     @PostMapping("saveDepartment")
     public Result saveDepartment(HttpServletRequest request) {
-        //获取传递过来科室信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//
-//        //获取医院编号
-//        String hoscode = (String)paramMap.get("hoscode");
-//        //1 获取医院系统传递过来的签名,签名进行MD5加密
-//        String hospSign = (String)paramMap.get("sign");
-//
-//        //2 根据传递过来医院编码，查询数据库，查询签名
-//       String signKey = hospitalSetService.getSignKey(hoscode);
-//
-//        //3 把数据库查询签名进行MD5加密
-//        String signKeyMd5 = MD5.encrypt(signKey);
-//
-//        //4 判断签名是否一致
-//        if(!hospSign.equals(signKeyMd5)) {
-//            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
-//        }
-//
-//        //调用service的方法
-//        departmentService.save(paramMap);
+       // 获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        //获取医院编号
+        String hoscode = (String)paramMap.get("hoscode");
+        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        String hospSign = (String)paramMap.get("sign");
+
+        //2 根据传递过来医院编码，查询数据库，查询签名
+       String signKey = hospitalSetService.getSignKey(hoscode);
+
+        //3 把数据库查询签名进行MD5加密
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        //4 判断签名是否一致
+        if(!hospSign.equals(signKeyMd5)) {
+            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        //调用service的方法
+        departmentService.save(paramMap);
         return Result.ok();
     }
 
     //查询医院
     @PostMapping("hospital/show")
     public Result getHospital(HttpServletRequest request) {
-//        //获取传递过来医院信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//        //获取医院编号
-//        String hoscode = (String)paramMap.get("hoscode");
-//        //1 获取医院系统传递过来的签名,签名进行MD5加密
-//        String hospSign = (String)paramMap.get("sign");
-//
-//        //2 根据传递过来医院编码，查询数据库，查询签名
-//        String signKey = hospitalSetService.getSignKey(hoscode);
-//
-//        //3 把数据库查询签名进行MD5加密
-//        String signKeyMd5 = MD5.encrypt(signKey);
-//
-//        //4 判断签名是否一致
-//        if(!hospSign.equals(signKeyMd5)) {
-//            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
-//        }
-//
-//        //调用service方法实现根据医院编号查询
-//        Hospital hospital = hospitalService.getByHoscode(hoscode);
-        return null;
-//        return Result.ok(hospital);
+        //获取传递过来医院信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //获取医院编号
+        String hoscode = (String)paramMap.get("hoscode");
+        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        String hospSign = (String)paramMap.get("sign");
+
+        //2 根据传递过来医院编码，查询数据库，查询签名
+        String signKey = hospitalSetService.getSignKey(hoscode);
+
+        //3 把数据库查询签名进行MD5加密
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        //4 判断签名是否一致
+        if(!hospSign.equals(signKeyMd5)) {
+            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        //调用service方法实现根据医院编号查询
+        Hospital hospital = hospitalService.getByHoscode(hoscode);
+        return Result.ok(hospital);
     }
 
     //上传医院接口
