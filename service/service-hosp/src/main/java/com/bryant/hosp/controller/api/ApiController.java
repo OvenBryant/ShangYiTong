@@ -207,6 +207,7 @@ public class ApiController {
             throw new YyghException(ResultCodeEnum.SIGN_ERROR);
         }
 
+        // 图片
         //传输过程中“+”转换为了“ ”，因此我们要转换回来
         String logoData = (String) paramMap.get("logoData");
         logoData = logoData.replaceAll(" ", "+");
