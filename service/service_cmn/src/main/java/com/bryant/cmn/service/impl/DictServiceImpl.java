@@ -11,6 +11,7 @@ import com.bryant.yygh.model.cmn.Dict;
 import com.bryant.yygh.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -132,6 +133,29 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
             EasyExcel.read(file.getInputStream(), DictEeVo.class, new DictListener(baseMapper)).sheet().doRead();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // 根据dictCode和value进行查询
+    @Override
+    public String getDictName(String dictCode, String value) {
+        // 如果dictCode为空,直接根据value查询
+        if(StringUtils.isEmpty(dictCode)){
+            QueryWrapper<Dict> wrapper = new QueryWrapper();
+            wrapper.eq("value",value);
+            Dict dict = baseMapper.selectOne(wrapper);
+            return dict.getName();
+        }else{  // dictCode不为空,则根据dictCode和value查询
+            QueryWrapper<Dict> wrapper = new QueryWrapper();
+            wrapper.eq("dict_code",dictCode);
+            Dict codeDict = baseMapper.selectOne(wrapper);
+            Long id = codeDict.getId();
+            // 根据id和value
+            Dict finalDict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                    .eq("parent_id", id)
+                    .eq("value", value));
+            return finalDict.getName();
+
         }
     }
 

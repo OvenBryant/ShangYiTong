@@ -13,4 +13,7 @@ public interface IDictService extends IService<Dict> {
     void exportDictData(HttpServletResponse response);
 
     void uploadData(MultipartFile file);
+
+    String getDictName(String dictCode, String value);
+
 }
