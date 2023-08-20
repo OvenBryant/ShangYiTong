@@ -37,8 +37,8 @@ public class ApiController {
     @Autowired
     private IDepartmentService departmentService;
 
-//    @Autowired
-//    private IScheduleService scheduleService;
+    @Autowired
+    private IScheduleService scheduleService;
 
     //删除排班
     @PostMapping("schedule/remove")
@@ -52,7 +52,7 @@ public class ApiController {
 
         //TODO 签名校验
 
-       // scheduleService.remove(hoscode,hosScheduleId);
+        scheduleService.remove(hoscode,hosScheduleId);
         return Result.ok();
     }
 
@@ -77,9 +77,8 @@ public class ApiController {
         scheduleQueryVo.setHoscode(hoscode);
         scheduleQueryVo.setDepcode(depcode);
         //调用service方法
-       // Page<Schedule> pageModel = scheduleService.findPageSchedule(page,limit,scheduleQueryVo);
-        return null;
-       // return Result.ok(pageModel);
+        Page<Schedule> pageModel = scheduleService.findPageSchedule(page,limit,scheduleQueryVo);
+       return Result.ok(pageModel);
     }
 
     //上传排班接口
@@ -90,7 +89,7 @@ public class ApiController {
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
         //TODO 签名校验
-        //scheduleService.save(paramMap);
+        scheduleService.save(paramMap);
         return Result.ok();
     }
 
@@ -121,6 +120,7 @@ public class ApiController {
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
         int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
         //TODO 签名校验
+
 
         DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();
         departmentQueryVo.setHoscode(hoscode);
