@@ -1,9 +1,9 @@
 package com.bryant.hosp.controller.api;
 
-import com.bryant.hosp.service.IDepartmentService;
+import com.bryant.hosp.service.DepartmentService;
 import com.bryant.hosp.service.IHospitalService;
 import com.bryant.hosp.service.IHospitalSetService;
-import com.bryant.hosp.service.IScheduleService;
+import com.bryant.hosp.service.ScheduleService;
 import com.bryant.yygh.common.exception.YyghException;
 import com.bryant.yygh.common.helper.HttpRequestHelper;
 import com.bryant.yygh.common.result.Result;
@@ -35,10 +35,10 @@ public class ApiController {
     private IHospitalSetService hospitalSetService;
 
     @Autowired
-    private IDepartmentService departmentService;
+    private DepartmentService departmentService;
 
     @Autowired
-    private IScheduleService scheduleService;
+    private ScheduleService scheduleService;
 
     //删除排班
     @PostMapping("schedule/remove")

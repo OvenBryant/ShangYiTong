@@ -2,11 +2,10 @@ package com.bryant.hosp.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.bryant.hosp.repository.ScheduleRepository;
-import com.bryant.hosp.service.IDepartmentService;
+import com.bryant.hosp.service.DepartmentService;
 import com.bryant.hosp.service.IHospitalService;
-import com.bryant.hosp.service.IScheduleService;
+import com.bryant.hosp.service.ScheduleService;
 import com.bryant.yygh.common.exception.YyghException;
 import com.bryant.yygh.common.result.ResultCodeEnum;
 import com.bryant.yygh.model.hosp.BookingRule;
@@ -33,7 +32,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class ScheduleServiceImpl implements IScheduleService {
+public class ScheduleServiceImpl implements ScheduleService {
 
     @Autowired
     private ScheduleRepository scheduleRepository;
@@ -45,7 +44,7 @@ public class ScheduleServiceImpl implements IScheduleService {
     private IHospitalService hospitalService;
 
     @Autowired
-    private IDepartmentService departmentService;
+    private DepartmentService departmentService;
 
     //上传排班接口
     @Override
@@ -119,7 +118,7 @@ public class ScheduleServiceImpl implements IScheduleService {
                 .sum("reservedNumber").as("reservedNumber")
                 .sum("availableNumber").as("availableNumber"),
                 //排序
-                Aggregation.sort(Sort.Direction.DESC,"workDate"),
+                Aggregation.sort(Sort.Direction.ASC,"workDate"),
                 //4 实现分页
                 Aggregation.skip((page-1)*limit),
                 Aggregation.limit(limit)
@@ -165,7 +164,7 @@ public class ScheduleServiceImpl implements IScheduleService {
     public List<Schedule> getDetailSchedule(String hoscode, String depcode, String workDate) {
         //根据参数查询mongodb
         List<Schedule> scheduleList =
-                scheduleRepository.findScheduleByHoscodeAndDepcodeAndWorkDate(hoscode,depcode,new DateTime(workDate).toDate());
+                scheduleRepository.findScheduleByHoscodeAndDepcodeAndWorkDate(hoscode,depcode,new DateTime(workDate).plusDays(1).toDate());
         //把得到list集合遍历，向设置其他值：医院名称、科室名称、日期对应星期
         scheduleList.stream().forEach(item->{
             this.packageSchedule(item);

@@ -3,7 +3,7 @@ package com.bryant.hosp.service.impl;
 import com.alibaba.fastjson.JSONObject;
 
 import com.bryant.hosp.repository.DepartmentRepository;
-import com.bryant.hosp.service.IDepartmentService;
+import com.bryant.hosp.service.DepartmentService;
 import com.bryant.yygh.model.hosp.Department;
 import com.bryant.yygh.vo.hosp.DepartmentQueryVo;
 import com.bryant.yygh.vo.hosp.DepartmentVo;
@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class DepartmentServiceImpl implements IDepartmentService {
+public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 

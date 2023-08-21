@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 import java.util.Map;
 
-public interface IDepartmentService {
+public interface DepartmentService {
     //上传科室接口
     void save(Map<String, Object> paramMap);
 

@@ -1,6 +1,6 @@
 package com.bryant.hosp.service;
 
-;
+
 import com.bryant.yygh.model.hosp.Schedule;
 import com.bryant.yygh.vo.hosp.ScheduleOrderVo;
 import com.bryant.yygh.vo.hosp.ScheduleQueryVo;
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 import java.util.Map;
 
-public interface IScheduleService {
+public interface ScheduleService {
 
     //上传排班接口
     void save(Map<String, Object> paramMap);
