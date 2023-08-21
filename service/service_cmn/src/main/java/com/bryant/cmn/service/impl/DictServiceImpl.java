@@ -9,6 +9,7 @@ import com.bryant.cmn.mapper.DictMapper;
 import com.bryant.cmn.service.IDictService;
 import com.bryant.yygh.model.cmn.Dict;
 import com.bryant.yygh.vo.cmn.DictEeVo;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -157,6 +158,20 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
             return finalDict.getName();
 
         }
+    }
+
+    @Override
+    public List<Dict> findByDictCode(String dictCode) {
+        Dict dict = getDictByDictCodeOne(dictCode);
+        List<Dict> childData = findChildData(dict.getId());
+        return childData;
+    }
+
+    // 根据dictCode获取对应的记录
+    public Dict getDictByDictCodeOne(String dictCode){
+        QueryWrapper<Dict> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("dict_code",dictCode);
+        return baseMapper.selectOne(queryWrapper);
     }
 
 }

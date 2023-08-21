@@ -37,8 +37,6 @@ public class DictController {
      * @return
      */
     //根据数据id查询子数据列表
-
-
     @Cacheable(value = "dict",keyGenerator ="keyGenerator" )
     @ApiOperation(value = "根据数据id查询子数据列表")
     @GetMapping("/findChildData/{id}")
@@ -108,6 +106,14 @@ public class DictController {
     public String getName(@PathVariable String value) {
         String dictName = dictService.getDictName("",value);
         return dictName;
+    }
+
+    // 根据dictCode获取子节点,省下面的市
+    @ApiOperation(value = "根据dictCode查询子数据列表")
+    @GetMapping("/findByDictCode/{dictCode}")
+    public Result findByDictCode(@PathVariable String dictCode){
+        List<Dict> list = dictService.findByDictCode(dictCode);
+        return Result.ok(list);
     }
 
 
