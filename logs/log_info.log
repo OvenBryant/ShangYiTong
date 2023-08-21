@@ -677,3 +677,33 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2023-08-21 17:38:32.623 [restartedMain] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - nacos registry, DEFAULT_GROUP service-hosp 192.168.144.1:8201 register finished
 2023-08-21 17:38:35.544 [restartedMain] INFO  org.springframework.cloud.commons.util.InetUtils - Cannot determine local hostname
 2023-08-21 17:38:35.547 [restartedMain] INFO  com.bryant.hosp.ServiceHospApplication - Started ServiceHospApplication in 43.553 seconds (JVM running for 46.95)
+2023-08-21 17:41:41.296 [http-nio-8201-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-21 17:41:41.297 [http-nio-8201-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-08-21 17:41:41.317 [http-nio-8201-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 19 ms
+2023-08-21 17:41:41.879 [http-nio-8201-exec-2] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用17:41:41.879
+2023-08-21 17:41:42.376 [http-nio-8201-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-08-21 17:41:43.799 [http-nio-8201-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-08-21 17:42:07.023 [http-nio-8201-exec-5] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用17:42:07.023
+2023-08-21 17:42:21.319 [http-nio-8201-exec-6] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用17:42:21.319
+2023-08-21 18:17:12.857 [http-nio-8201-exec-7] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用18:17:12.857
+2023-08-21 18:20:19.897 [http-nio-8201-exec-2] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用18:20:19.897
+2023-08-21 18:20:20.270 [http-nio-8201-exec-10] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用18:20:20.269
+2023-08-21 18:20:23.479 [http-nio-8201-exec-9] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用18:20:23.479
+2023-08-21 18:23:21.743 [http-nio-8201-exec-3] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用18:23:21.742
+2023-08-21 18:42:59.084 [http-nio-8201-exec-4] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: service-cmn.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2023-08-21 18:42:59.163 [http-nio-8201-exec-4] INFO  com.netflix.loadbalancer.BaseLoadBalancer - Client: service-cmn instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-cmn,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2023-08-21 18:42:59.195 [http-nio-8201-exec-4] INFO  c.n.loadbalancer.DynamicServerListLoadBalancer - Using serverListUpdater PollingServerListUpdater
+2023-08-21 18:42:59.475 [http-nio-8201-exec-4] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: service-cmn.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2023-08-21 18:42:59.480 [http-nio-8201-exec-4] INFO  c.n.loadbalancer.DynamicServerListLoadBalancer - DynamicServerListLoadBalancer for client service-cmn initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=service-cmn,current list of Servers=[192.168.144.1:8202],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.144.1:8202;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@7a371339
+2023-08-21 18:43:00.203 [PollingServerListUpdater-0] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: service-cmn.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2023-08-21 18:46:02.458 [http-nio-8201-exec-6] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用18:46:02.458
+2023-08-21 18:47:23.600 [http-nio-8201-exec-10] INFO  com.bryant.hosp.controller.HospitalSetController - 分页查询接口调用18:47:23.600
+2023-08-21 18:51:52.394 [Thread-105] INFO  com.netflix.loadbalancer.PollingServerListUpdater - Shutting down the Executor Pool for PollingServerListUpdater
+2023-08-21 18:51:52.403 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2023-08-21 18:51:52.408 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registration finished.
+2023-08-21 18:51:52.409 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-08-21 18:51:52.456 [SpringContextShutdownHook] INFO  org.mongodb.driver.connection - Closed connection [connectionId{localValue:2, serverValue:7}] to localhost:27017 because the pool has been closed.
+2023-08-21 18:51:52.459 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-08-21 18:51:52.464 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

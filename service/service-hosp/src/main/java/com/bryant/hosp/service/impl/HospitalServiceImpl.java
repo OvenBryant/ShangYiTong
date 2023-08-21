@@ -104,16 +104,15 @@ public class HospitalServiceImpl implements IHospitalService {
 
     @Override
     public Map<String, Object> getHospById(String id) {
-//        Map<String, Object> result = new HashMap<>();
-//        Hospital hospital = this.setHospitalHosType(hospitalRepository.findById(id).get());
-//        //医院基本信息（包含医院等级）
-//        result.put("hospital",hospital);
-//        //单独处理更直观
-//        result.put("bookingRule", hospital.getBookingRule());
-//        //不需要重复返回
-//        hospital.setBookingRule(null);
-//        return result;
-        return null;
+        Map<String, Object> result = new HashMap<>();
+        Hospital hospital = this.setHospitalHosType(hospitalRepository.findById(id).get());
+        //医院基本信息（包含医院等级）
+        result.put("hospital",hospital);
+        //单独处理更直观
+        result.put("bookingRule", hospital.getBookingRule());
+        //不需要重复返回
+        hospital.setBookingRule(null);
+        return result;
     }
 
     //获取医院名称
