@@ -31,7 +31,7 @@
       </el-form-item>
 
       <el-button type="primary" icon="el-icon-search" @click="fetchData()">查询</el-button>
-      <el-button type="default" @click="resetData()">清空</el-button>
+      <el-button type="default" @click="resetData">清空</el-button>
     </el-form>
 
     <!-- banner列表 -->
@@ -112,8 +112,8 @@ export default {
       page: 1, // 默认页码
       limit: 10, // 每页记录数
       searchObj: {
-        provinceCode:'',
-        cityCode:''
+        provinceCode: '',
+        cityCode: ''
       }, // 查询表单对象
       provinceList: [], //所有省集合
       cityList: []   //所有市集合
@@ -126,10 +126,22 @@ export default {
     this.findAllProvince()
   },
   methods: {
+    resetData() {
+      this.searchObj.provinceCode = '',
+        this.searchObj.cityCode = ''
+    },
+    //更新医院上线状态
+    updateStatus(id, status) {
+      hospApi.updateStatus(id, status)
+        .then(response => {
+          //刷新页面
+          this.fetchData(1)
+        })
+    },
     //医院列表
-    fetchData(page=1) {
+    fetchData(page = 1) {
       this.page = page
-      hospApi.getHospList(this.page,this.limit,this.searchObj)
+      hospApi.getHospList(this.page, this.limit, this.searchObj)
         .then(response => {
           //每页数据集合
           this.list = response.data.content
@@ -144,6 +156,23 @@ export default {
       hospApi.findByDictCode('Province')
         .then(response => {
           this.provinceList = response.data
+        })
+    },
+    //分页，页码变化
+    changeSize() {
+      this.limit = size
+      this.fetchData(1)
+    },
+
+    //点击某个省，显示里面市（联动）
+    provinceChanged() {
+      //初始化值
+      this.cityList = []
+      this.searchObj.cityCode = ''
+      //调用方法，根据省id，查询下面子节点
+      hospApi.findChildId(this.searchObj.provinceCode)
+        .then(response => {
+          this.cityList = response.data
         })
     },
   }
