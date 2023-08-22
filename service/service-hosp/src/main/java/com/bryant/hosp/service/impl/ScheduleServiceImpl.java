@@ -164,7 +164,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     public List<Schedule> getDetailSchedule(String hoscode, String depcode, String workDate) {
         //根据参数查询mongodb
         List<Schedule> scheduleList =
-                scheduleRepository.findScheduleByHoscodeAndDepcodeAndWorkDate(hoscode,depcode,new DateTime(workDate).plusDays(1).toDate());
+                scheduleRepository.findScheduleByHoscodeAndDepcodeAndWorkDate(hoscode,depcode,new DateTime(workDate).toDate());
         //把得到list集合遍历，向设置其他值：医院名称、科室名称、日期对应星期
         scheduleList.stream().forEach(item->{
             this.packageSchedule(item);

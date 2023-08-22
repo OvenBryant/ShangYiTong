@@ -10,6 +10,7 @@
         <module>model</module>
         <module>service</module>
         <module>service_client</module>
+        <module>service-gateway</module>
     </modules>
 
     <parent>
@@ -74,18 +75,6 @@
                 <version>${mysql.version}</version>
             </dependency>
 
-<!--            &lt;!&ndash;swagger&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>io.springfox</groupId>-->
-<!--                <artifactId>springfox-swagger2</artifactId>-->
-<!--                <version>${swagger.version}</version>-->
-<!--            </dependency>-->
-<!--            &lt;!&ndash;swagger ui&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>io.springfox</groupId>-->
-<!--                <artifactId>springfox-swagger-ui</artifactId>-->
-<!--                <version>${swagger.version}</version>-->
-<!--            </dependency>-->
 
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
