@@ -441,3 +441,10 @@
 2023-08-25 20:28:28.798 [restartedMain] INFO  org.springframework.cloud.commons.util.InetUtils - Cannot determine local hostname
 2023-08-25 20:28:28.799 [restartedMain] INFO  com.bryant.hosp.ServiceHospApplication - Started ServiceHospApplication in 39.311 seconds (JVM running for 16012.215)
 2023-08-25 20:28:28.803 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2023-08-25 22:25:37.603 [Thread-85] INFO  com.netflix.loadbalancer.PollingServerListUpdater - Shutting down the Executor Pool for PollingServerListUpdater
+2023-08-25 22:25:37.636 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2023-08-25 22:25:37.637 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [BEAT] removing beat: DEFAULT_GROUP@@service-hosp:192.168.144.1:8201 from beat map.
+2023-08-25 22:25:37.639 [SpringContextShutdownHook] INFO  com.alibaba.nacos.client.naming - [DEREGISTER-SERVICE] public deregistering service DEFAULT_GROUP@@service-hosp with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"instanceIdGenerator":"simple","ip":"192.168.144.1","ipDeleteTimeout":30000,"metadata":{},"port":8201,"weight":1.0}
+2023-08-25 22:25:39.646 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registration finished.
+2023-08-25 22:25:39.647 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-08-25 22:25:39.673 [SpringContextShutdownHook] INFO  org.mongodb.driver.connection - Closed connection [connectionId{localValue:9, serverValue:26}] to localhost:27017 because the pool has been closed.

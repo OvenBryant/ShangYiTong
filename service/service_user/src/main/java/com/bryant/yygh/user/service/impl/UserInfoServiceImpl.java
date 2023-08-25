@@ -45,11 +45,11 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
             throw new YyghException(ResultCodeEnum.PARAM_ERROR);
         }
 
-//        TODO: 判断手机验证码和输入的验证码是否一致
-//        String redisCode = redisTemplate.opsForValue().get(phone);
-//        if(!code.equals(redisCode)) {
-//            throw new YyghException(ResultCodeEnum.CODE_ERROR);
-//        }
+        // TODO: 判断手机验证码和输入的验证码是否一致
+        String redisCode = redisTemplate.opsForValue().get(phone);
+        if(!code.equals(redisCode)) {
+            throw new YyghException(ResultCodeEnum.CODE_ERROR);
+        }
 
 //        //绑定手机号码
 //        UserInfo userInfo = null;
