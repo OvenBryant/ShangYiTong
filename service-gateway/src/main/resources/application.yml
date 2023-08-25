@@ -23,6 +23,11 @@ spring:
           predicates:
             - Path=/*/cmn/**
 
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/*/user/**
+
 
 
 

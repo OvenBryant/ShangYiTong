@@ -1,0 +1,47 @@
+# 服务端口
+server:
+  port: 8203
+
+# 服务名
+spring:
+  application:
+    name: service-user
+# 环境设置: dev、test、prod
+  profiles:
+    active: dev
+# mysql数据库连接
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yygh_user?characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+# 返回json的全局时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+# redis配置
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    timeout: 3000000
+    password: 123Aadm7
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        #最大阻塞等待时间(负数表示没限制)
+        max-idle: 5
+        min-idle: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+# 配置mapper xml文件的路径
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
