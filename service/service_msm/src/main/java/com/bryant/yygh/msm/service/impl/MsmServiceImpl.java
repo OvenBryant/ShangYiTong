@@ -24,7 +24,7 @@ import java.util.Map;
 public class MsmServiceImpl implements MsmService {
 
     private static final String Aliyun_SignName="我的个人学习网站";
-    private static final String Aliyun_TemplateCode="SMS_284680106";
+    private static final String Aliyun_TemplateCode="SMS_462705832";
 
     @Override
     public boolean send(String phone, String code) {
@@ -43,7 +43,7 @@ public class MsmServiceImpl implements MsmService {
         //request.setProtocol(ProtocolType.HTTPS);
         request.setMethod(MethodType.POST);
         request.setDomain("dysmsapi.aliyuncs.com");
-        request.setVersion("2023-08-25");
+        request.setVersion("2017-05-25");
         request.setAction("SendSms");
 
         //手机号
