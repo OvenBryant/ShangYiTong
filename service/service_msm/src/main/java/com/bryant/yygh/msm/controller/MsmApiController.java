@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("/api/msm")
+@RequestMapping("/api/sms")
 public class MsmApiController {
 
     @Autowired

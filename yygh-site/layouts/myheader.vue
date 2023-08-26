@@ -175,7 +175,7 @@ export default {
     // 微信登录回调处理
     let self = this;
     window["loginCallback"] = (name,token, openid) => {
-      debugger
+      // debugger
       self.loginCallback(name, token, openid);
     }
   },
@@ -216,7 +216,7 @@ export default {
 
     // 登录
     login() {
-      debugger
+      // debugger
       this.userInfo.code = this.dialogAtrr.inputValue
 
       if(this.dialogAtrr.loginBtn == '正在提交...') {
@@ -251,7 +251,7 @@ export default {
 
     // 获取验证码
     getCodeFun() {
-      if (!(/^1[34578]\d{9}$/.test(this.userInfo.phone))) {
+      if (!(/^1[345789]\d{9}$/.test(this.userInfo.phone))) {
         this.$message.error('手机号码不正确')
         return;
       }

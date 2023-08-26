@@ -93,6 +93,44 @@ public class HospitalSetController {
         return Result.ok(hospitalSetPage);
     }
 
+
+    /**
+     * 分页接口
+     * 参数：当前页，大小，参数对象（医院名称，医院代号）
+     *
+     * @param pageNum
+     * @param pageSize
+     * @param hospitalSetQueryVo
+     * @return
+     */
+    //使用@RequestBody后使用POSTMapping获取请求的值
+    @ApiOperation(value = "分页查询2")
+    @PostMapping("/findPageHospSet/{pageNum}/{pageSize}")
+    public Result pageAll2(@PathVariable Integer pageNum,
+                          @PathVariable Integer pageSize,
+                          @RequestBody(required = false) HospitalSetQueryVo hospitalSetQueryVo) {
+
+
+        log.info("分页查询接口调用" + LocalTime.now().toString());
+
+        Page<HospitalSet> page = new Page<>(pageNum, pageSize);
+
+        //1.模糊查询,lambdaQueryWrapper先判空
+        QueryWrapper queryWrapper = new QueryWrapper();
+        String hoscode = hospitalSetQueryVo.getHoscode();
+        String hosname = hospitalSetQueryVo.getHosname();
+
+        if(!StringUtils.isEmpty(hoscode)){
+            queryWrapper.eq("hoscode",hoscode);
+        }
+        if(!StringUtils.isEmpty(hosname)){
+            queryWrapper.like("hosname",hosname);
+        }
+
+        Page<HospitalSet> hospitalSetPage = hospitalSetService.page(page, queryWrapper);
+        return Result.ok(hospitalSetPage);
+    }
+
     /**
      * 添加医院信息
      *
