@@ -208,7 +208,7 @@ export default {
         certificatesNo: [{ required: true, trigger: 'blur', message: '必须输入' }],
         birthdate: [{ required: true, trigger: 'blur', message: '必须输入' }],
         phone: [{ required: true, trigger: 'blur', message: '必须输入' }],
-        addressSelected: [{ required: true, trigger: 'blur', message: '必须输入' }],
+        // addressSelected: [{ required: true, trigger: 'blur', message: '必须输入' }],
         address: [{ required: true, trigger: 'blur', message: '必须输入' }]
       }
     }
@@ -242,6 +242,9 @@ export default {
 
     fetchDataById(id) {
       patientApi.getById(id).then(response => {
+
+        console.log("初始化: ",response.data)
+
         this.patient = response.data
 
         //添加默认值

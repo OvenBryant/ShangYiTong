@@ -83,6 +83,7 @@ export default {
 
   methods: {
     findPatientList() {
+
       patientApi.findList().then(response => {
         this.patientList = response.data
       })
