@@ -38,7 +38,6 @@
 
     <h4>就诊人信息</h4>
     <el-table
-        v-loading="listLoading"
         :data="patientList"
         stripe
             style="width: 100%">

@@ -4,7 +4,7 @@
         <!--查询表单-->
         <el-form  :inline="true" class="demo-form-inline">
             <el-form-item>
-                <el-input v-model="searchObj.keyword" placeholder="姓名/手机"/>
+                <el-input v-model="searchObj.keyword" placeholder="用户姓名"/>
             </el-form-item>
 
             <el-form-item  label="创建时间">
@@ -80,6 +80,7 @@
         />
     </div>
 </template>
+
 <script>
 import userInfoApi from '@/api/userInfo'
 

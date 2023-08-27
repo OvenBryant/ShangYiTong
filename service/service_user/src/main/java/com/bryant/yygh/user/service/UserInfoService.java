@@ -23,4 +23,9 @@ public interface UserInfoService {
 
     UserInfo getById(Long userId);
 
+    void lock(Long userId, Integer status);
+
+    Map<String, Object> show(Long userId);
+
+    void approval(Long userId, Integer authStatus);
 }
