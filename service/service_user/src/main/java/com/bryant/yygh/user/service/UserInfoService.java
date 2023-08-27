@@ -22,4 +22,5 @@ public interface UserInfoService {
     void userAuth(Long userId, UserAuthVo userAuthVo);
 
     UserInfo getById(Long userId);
+
 }

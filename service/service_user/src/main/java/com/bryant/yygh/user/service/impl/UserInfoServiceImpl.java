@@ -3,7 +3,6 @@ package com.bryant.yygh.user.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.bryant.yygh.common.exception.YyghException;
@@ -19,9 +18,11 @@ import com.bryant.yygh.vo.user.UserInfoQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements UserInfoService {
@@ -32,7 +33,40 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
 
     @Override
     public IPage<UserInfo> selectPage(Page<UserInfo> pageParam, UserInfoQueryVo userInfoQueryVo) {
-        return null;
+        //UserInfoQueryVo获取条件值
+        String name = userInfoQueryVo.getKeyword(); //用户名称
+        Integer status = userInfoQueryVo.getStatus();//用户状态
+        Integer authStatus = userInfoQueryVo.getAuthStatus(); //认证状态
+        String createTimeBegin = userInfoQueryVo.getCreateTimeBegin(); //开始时间
+        String createTimeEnd = userInfoQueryVo.getCreateTimeEnd(); //结束时间
+
+        //构造lambda表达式
+        LambdaQueryWrapper<UserInfo> lambdaQueryWrapper = new LambdaQueryWrapper<UserInfo>()
+                .like(!StringUtils.isEmpty(name), UserInfo::getName, name)
+                .eq(!StringUtils.isEmpty(status), UserInfo::getStatus, status)
+                .eq(!StringUtils.isEmpty(authStatus), UserInfo::getAuthStatus, authStatus)
+                .ge(!StringUtils.isEmpty(createTimeBegin), UserInfo::getCreateTime, createTimeBegin)
+                .le(!StringUtils.isEmpty(createTimeEnd), UserInfo::getCreateTime, createTimeEnd);
+
+        //调用mapper方法
+        Page<UserInfo> userInfoPage = baseMapper.selectPage(pageParam, lambdaQueryWrapper);
+        //封装
+        userInfoPage.getRecords().stream().map(e -> {
+            UserInfo userInfo = this.packageUserInfo(e);
+            return userInfo;
+        }).collect(Collectors.toList());
+
+        return userInfoPage;
+    }
+
+    //编号变成对应值封装
+    private UserInfo packageUserInfo(UserInfo userInfo) {
+        //处理认证状态编码
+        userInfo.getParam().put("authStatusString", AuthStatusEnum.getStatusNameByStatus(userInfo.getAuthStatus()));
+        //处理用户状态 0  1
+        String statusString = userInfo.getStatus().intValue() == 0 ? "锁定" : "正常";
+        userInfo.getParam().put("statusString", statusString);
+        return userInfo;
     }
 
     //用户手机号登录接口
