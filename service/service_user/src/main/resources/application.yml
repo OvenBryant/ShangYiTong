@@ -1,6 +1,6 @@
 # 服务端口
 server:
-  port: 8203
+  port: 8160
 
 # 服务名
 spring:

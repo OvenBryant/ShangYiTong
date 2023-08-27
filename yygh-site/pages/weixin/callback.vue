@@ -1,7 +1,6 @@
 <template>
   <!-- header -->
   <div>
-
   </div>
   <!-- footer -->
 </template>

@@ -1,0 +1,25 @@
+server:
+  port: 8205
+
+spring:
+  application:
+    name: service-oss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+
+aliyun:
+  oss:
+    endpoint: oss-cn-wulanchabu.aliyuncs.com
+    accessKeyId: LTAI5tJBZmBzrNxM8pNAXYRa
+    secret: 8XkcQqSDKobSLuHZM2aOwPhKeRF1cl
+    bucket: yygh-bryant

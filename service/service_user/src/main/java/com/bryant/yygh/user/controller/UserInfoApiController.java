@@ -3,6 +3,7 @@ package com.bryant.yygh.user.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bryant.yygh.common.result.Result;
+import com.bryant.yygh.common.utils.AuthContextHolder;
 import com.bryant.yygh.model.user.UserInfo;
 import com.bryant.yygh.user.service.UserInfoService;
 import com.bryant.yygh.vo.user.LoginVo;
@@ -33,19 +34,20 @@ public class UserInfoApiController {
         return Result.ok(info);
     }
 
-//    //用户认证接口
-//    @PostMapping("auth/userAuth")
-//    public Result userAuth(@RequestBody UserAuthVo userAuthVo, HttpServletRequest request) {
-//        //传递两个参数，第一个参数用户id，第二个参数认证数据vo对象
-//        userInfoService.userAuth(AuthContextHolder.getUserId(request),userAuthVo);
-//        return Result.ok();
-//    }
-//
-//    //获取用户id信息接口
-//    @GetMapping("auth/getUserInfo")
-//    public Result getUserInfo(HttpServletRequest request) {
-//        Long userId = AuthContextHolder.getUserId(request);
-//        UserInfo userInfo = userInfoService.getById(userId);
-//        return Result.ok(userInfo);
-//    }
+    //用户认证接口
+    @PostMapping("auth/userAuth")
+    public Result userAuth(@RequestBody UserAuthVo userAuthVo, HttpServletRequest request) {
+        //传递两个参数，第一个参数用户id，第二个参数认证数据vo对象
+        userInfoService.userAuth(AuthContextHolder.getUserId(request),userAuthVo);
+        return Result.ok();
+    }
+
+    //获取用户id信息接口
+    @GetMapping("auth/getUserInfo")
+    public Result getUserInfo(HttpServletRequest request) {
+        Long userId = AuthContextHolder.getUserId(request);
+        UserInfo userInfo = userInfoService.getById(userId);
+        return Result.ok(userInfo);
+
+    }
 }

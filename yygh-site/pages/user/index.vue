@@ -46,7 +46,7 @@
                     v-for="item in certificatesTypeList"
                     :key="item.value"
                     :label="item.name"
-                    :value="item.value">
+                    :value="item.name">
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -90,7 +90,8 @@
                 </div>
               </el-form-item>
               <el-form-item prop="name" label="证件类型：">
-                {{ userInfo.param.certificatesTypeString }}
+<!--                {{ userInfo.param.certificatesTypeString }}-->
+                {{userInfo.certificatesType}}
               </el-form-item>
               <el-form-item prop="name" label="证件号码：">
                 {{ userInfo.certificatesNo }}
@@ -128,11 +129,12 @@ export default {
     return {
       userAuah: defaultForm,
       certificatesTypeList: [],
-      fileUrl:'http://localhost/api/oss/file/fileUpload?fileHost=userAuah',
+      fileUrl:'http://localhost/api/oss/file/fileUpload',
 
       userInfo: {
         param: {}
       },
+      formData:{},
 
       submitBnt: '提交'
     }
@@ -162,7 +164,7 @@ export default {
       }
 
       this.submitBnt = '正在提交...'
-      userInfoApi.saveUserAuah(this.userAuah).then(response => {
+      userInfoApi.saveUserAuth(this.userAuah).then(response => {
         this.$message.success("提交成功")
         window.location.reload()
       }).catch(e => {
@@ -177,11 +179,13 @@ export default {
     },
 
     onUploadSuccess(response, file) {
-      debugger
       if(response.code !== 200) {
         this.$message.error("上传失败")
         return
       }
+      console.log('------------------')
+      console.log(file.response.data)
+      console.log('------------------')
       // 填充上传文件列表
       this.userAuah.certificatesUrl = file.response.data
     }
