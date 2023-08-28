@@ -84,7 +84,7 @@
                       >{{ item.param.hostypeString }}
                     </div>
                     <div class="icon-wrapper">
-                      <span class="iconfont"></span>每天{{
+                      <span class="iconfont"></span>每 天{{
                         item.bookingRule.releaseTime
                       }}放号
                     </div>
@@ -332,7 +332,7 @@ export default {
     show(hoscode) {
       console.log('当前页面URL:  ',window.location.href)  // http://localhost:3000
       window.location.href = "/hospital/" + hoscode;
-      
+
     },
   },
 };
