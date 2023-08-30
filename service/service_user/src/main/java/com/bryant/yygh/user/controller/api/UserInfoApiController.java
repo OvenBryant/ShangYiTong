@@ -1,4 +1,4 @@
-package com.bryant.yygh.user.controller;
+package com.bryant.yygh.user.controller.api;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
