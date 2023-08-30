@@ -17,6 +17,8 @@ public interface OrderService extends IService<OrderInfo> {
     //生成挂号订单
     Long saveOrder(String scheduleId, Long patientId);
 
+    IPage<OrderInfo> selectPage(Page<OrderInfo> pageParam, OrderQueryVo orderQueryVo);
+
 //    //根据订单id查询订单详情
 //    OrderInfo getOrder(String orderId);
 //
@@ -37,5 +39,5 @@ public interface OrderService extends IService<OrderInfo> {
 //     * @param orderId
 //     * @return
 //     */
-//    Map<String, Object> show(Long orderId);
+    Map<String, Object> show(Long orderId);
 }

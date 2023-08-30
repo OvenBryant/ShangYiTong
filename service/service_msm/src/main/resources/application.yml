@@ -27,6 +27,13 @@ spring:
       discovery:
         server-addr: localhost:8848
 
+#rabbitmq地址
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 aliyun:
   sms:
     regionId: default

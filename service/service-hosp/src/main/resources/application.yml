@@ -29,3 +29,11 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+  #rabbitmq地址
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
