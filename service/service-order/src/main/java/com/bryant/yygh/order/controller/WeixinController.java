@@ -1,6 +1,5 @@
 package com.bryant.yygh.order.controller;
 
-
 import com.bryant.yygh.common.result.Result;
 import com.bryant.yygh.enums.PaymentTypeEnum;
 import com.bryant.yygh.order.service.PaymentService;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -32,7 +32,7 @@ public class WeixinController {
     @Autowired
     private WeixinService weixinPayService;
 
-    @Autowired
+    @Resource
     private PaymentService paymentService;
     /**
      * 下单 生成二维码

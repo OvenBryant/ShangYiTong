@@ -137,6 +137,7 @@ export default {
         param: {}
       },
 
+      form:{},
       dialogPayVisible: false,
       payObj: {},
       timer: null  // 定时器名称
@@ -191,7 +192,6 @@ export default {
 
     queryPayStatus(orderId) {
       weixinApi.queryPayStatus(orderId).then(response => {
-        debugger
         if (response.message == '支付中') {
           return
         }
@@ -201,7 +201,6 @@ export default {
     },
 
     closeDialog() {
-      debugger
       if(this.timer) {
         clearInterval(this.timer);
       }
