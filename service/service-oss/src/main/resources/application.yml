@@ -19,7 +19,7 @@ spring:
 
 aliyun:
   oss:
-    endpoint: oss-cn-wulanchabu.aliyuncs.com
-    accessKeyId: LTAI5tJBZmBzrNxM8pNAXYRa
-    secret: 8XkcQqSDKobSLuHZM2aOwPhKeRF1cl
-    bucket: yygh-bryant
+    endpoint: ""
+    accessKeyId: ""
+    secret: ""
+    bucket: ""
